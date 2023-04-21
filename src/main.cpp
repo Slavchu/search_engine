@@ -125,38 +125,33 @@ TEST(TestCaseSearchServer, TestTop5)
 
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);
-    try{
-        JSON::ConverterJSON converter;
-        inverted_index::InvertedIndex invIndex;
-        
-        invIndex.updateDocumentBase(converter.getTextDocument());
-        auto requests = converter.getRequests();
-        size_t req_size = (requests.size() < JSON::config::getMaxResponses() ) ? requests.size() : JSON::config::getMaxResponses();
-        search_server::SearchServer searchServ(invIndex);
-        std::vector<std::vector<std::pair<size_t, float>>> answers;
-        for(auto it: requests){
-            std::vector <std::string> request;
-            std::stringstream ss;
-            ss << it;
-            std::string word;
-            while(!ss.eof()){
-                ss >> word;
-                request.push_back(inverted_index::to_lower_erase(word));
-            }
-            auto answer = searchServ.search(request);
-            std::vector <std::pair <size_t,float>> vecAnswer;
-            for(auto it: answer){
-                vecAnswer.push_back(std::make_pair(it.doc_id, it.rank));
-            }
-            answers.push_back(vecAnswer);
-        }
-        converter.putAnswers(answers);
-        
-        
+    
+    JSON::ConverterJSON converter;
+    inverted_index::InvertedIndex invIndex;
 
-    } catch(JSON::json_exception &e){
-        std::cerr <<"JsonException:" << e.what() << std::endl;
-        return -1;
+    invIndex.updateDocumentBase(converter.getTextDocument());
+    auto requests = converter.getRequests();
+    size_t req_size = (requests.size() < JSON::config::getMaxResponses()) ? requests.size() : JSON::config::getMaxResponses();
+    search_server::SearchServer searchServ(invIndex);
+    std::vector<std::vector<std::pair<size_t, float>>> answers;
+    for (auto it : requests)
+    {
+        std::vector<std::string> request;
+        std::stringstream ss;
+        ss << it;
+        std::string word;
+        while (!ss.eof())
+        {
+            ss >> word;
+            request.push_back(inverted_index::to_lower_erase(word));
+        }
+        auto answer = searchServ.search(request);
+        std::vector<std::pair<size_t, float>> vecAnswer;
+        for (auto it : answer)
+        {
+            vecAnswer.push_back(std::make_pair(it.doc_id, it.rank));
+        }
+        answers.push_back(vecAnswer);
     }
-    return RUN_ALL_TESTS();
+    converter.putAnswers(answers);
 }

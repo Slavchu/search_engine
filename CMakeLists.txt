@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 project(search_engine)
 set(CMAKE_CXX_STANDARD 17)
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output_build/)
 
 include(FetchContent)
 
@@ -9,12 +8,12 @@ enable_testing()
 
 include(CTest)
 
-
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json  ${CMAKE_CURRENT_SOURCE_DIR}/requests.json DESTINATION ${CMAKE_BINARY_DIR}/)
 
 
 add_library(json_converter ${CMAKE_SOURCE_DIR}/src/classes/json_converter/json_converter.cpp)
-add_library(inverted_index STATIC ${CMAKE_SOURCE_DIR}/src/classes/inverted_index/inverted_index.cpp)
-add_library(search_server STATIC ${CMAKE_SOURCE_DIR}/src/classes/search_server/search_server.cpp)
+add_library(inverted_index  ${CMAKE_SOURCE_DIR}/src/classes/inverted_index/inverted_index.cpp)
+add_library(search_server  ${CMAKE_SOURCE_DIR}/src/classes/search_server/search_server.cpp)
 
 add_executable(search_engine src/classes/search_server/search_server.cpp src/classes/inverted_index/inverted_index.cpp src/classes/json_converter/json_converter.cpp src/main.cpp)
 

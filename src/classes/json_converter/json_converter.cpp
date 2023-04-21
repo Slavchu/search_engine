@@ -18,20 +18,13 @@ ConverterJSON::ConverterJSON(){
     req >> fileRequests;
 
     
-    if(fileConfig.find("config") == fileConfig.end()){
-        throw json_exception("config error");
-        
-    }
-    if(fileConfig["config"]["name"].is_null() || fileConfig["config"]["version"].is_null() || fileConfig["config"]["max_responses"].is_null()){
-        throw json_exception("not enough config data");
-    }
+    
     config::maxResponses = fileConfig["config"]["max_responses"];
     config::name = fileConfig["config"]["name"];
     config::version = fileConfig["config"]["version"];
 }
 std::vector <std::string > ConverterJSON::getTextDocument(){
     if(fileConfig.find("files") == fileConfig.end() || !fileConfig.find("files").value().size()) 
-        throw json_exception("no files set");
     file_count = fileConfig.find("files").value().size();
     std::vector<std::string> filenames =  fileConfig.find("files").value();
     std::vector<std::string> result;
