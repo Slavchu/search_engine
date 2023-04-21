@@ -8,8 +8,7 @@ enable_testing()
 
 include(CTest)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json  ${CMAKE_CURRENT_SOURCE_DIR}/requests.json DESTINATION ${CMAKE_BINARY_DIR}/)
-
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/output_build/)
 
 add_library(json_converter ${CMAKE_SOURCE_DIR}/src/classes/json_converter/json_converter.cpp)
 add_library(inverted_index  ${CMAKE_SOURCE_DIR}/src/classes/inverted_index/inverted_index.cpp)

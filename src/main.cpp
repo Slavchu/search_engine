@@ -127,6 +127,10 @@ int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);
     
     JSON::ConverterJSON converter;
+    if(!converter.isOpened()){
+        std::cerr << "Can't open config or request file\n";
+        return 0;
+    }
     inverted_index::InvertedIndex invIndex;
 
     invIndex.updateDocumentBase(converter.getTextDocument());

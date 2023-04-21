@@ -2,7 +2,6 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
-#include <exception>
 namespace JSON{
     typedef std::pair<size_t, float> answer;
     
@@ -27,19 +26,16 @@ namespace JSON{
             nlohmann::json fileConfig;
             nlohmann::json fileRequests;
             size_t file_count, request_count;
+            bool isOpen;
+
         public:
             ConverterJSON();
             std::vector <std::string> getTextDocument();
             std::vector <std::string> getRequests();
+            bool isOpened(){return isOpen;}
+
             void putAnswers(std::vector<std::vector<answer>> answers);
     };
-    class json_exception: public std::exception{
-        std::string error;
-        public:
-        json_exception(std::string err) :error(err){};
-        const char * what() const noexcept override{
-            return error.c_str();
-        }
-    };
+    
 
 }

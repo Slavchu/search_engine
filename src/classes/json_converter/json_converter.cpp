@@ -12,8 +12,7 @@ ConverterJSON::ConverterJSON(){
     std::ifstream cfg(std::filesystem::current_path().string() + "/config.json"),
     req(std::filesystem::current_path().string() + "/requests.json");
     
-    if(!cfg.is_open()) throw json_exception("config file not found");
-    else if(!req.is_open()) throw json_exception("request file not found");
+    if(!cfg.is_open() || !req.is_open()) {isOpen = false ; return;}
     cfg >> fileConfig;
     req >> fileRequests;
 
@@ -31,7 +30,7 @@ std::vector <std::string > ConverterJSON::getTextDocument(){
     for(int i = 0; i < filenames.size(); i++){
         std::ifstream file(filenames[i]);
         std::stringstream ss;
-        if(!file.is_open()) throw json_exception(filenames[i] + "\n File not found");
+        if(!file.is_open()) 
 
         ss << file.rdbuf();
         result.push_back(ss.str());
@@ -44,8 +43,7 @@ std::vector <std::string > ConverterJSON::getTextDocument(){
 }
 
 std::vector <std::string> ConverterJSON::getRequests(){
-    if(fileRequests.find("requests") == fileRequests.end() || !fileRequests.find("requests").value().size())
-        throw json_exception("no requests found");
+    
     std::vector<std::string> res =fileRequests.find("requests").value();
     
     if(res.size() > config::maxResponses)
