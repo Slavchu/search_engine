@@ -1,0 +1,36 @@
+#pragma once
+
+#include <map>
+#include <vector>
+#include <string>
+#include <exception>
+#include <sstream>
+
+
+namespace inverted_index{
+    std::string to_lower_erase(const std::string str);
+    struct Entry{
+        size_t document_id, count;
+        Entry(size_t document_id, size_t count){
+            this->count = count;
+            this->document_id = document_id;
+        }
+        
+        bool operator ==(const Entry& other) const {
+            return (document_id == other.document_id &&
+             count == other.count);
+        }
+        bool operator==(int document_id) const{
+            return this->document_id == document_id;
+        }
+    };
+    class InvertedIndex{
+            std::map<std::string, std::vector <Entry>> freqDictionary;
+            void indexer(std::string document, int doc_ind);
+        public:
+            void updateDocumentBase(std::vector <std::string> documents);
+            std::vector<Entry> getWordCount(std::string word) const;
+
+    };
+    
+}

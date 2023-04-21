@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/json_converter -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -I/home/admin/Projects/search_engine/build/_deps/json-src/include -g -o CMakeFiles/json_converter.dir/src/classes/json_converter/json_converter.cpp.o -c /home/admin/Projects/search_engine/src/classes/json_converter/json_converter.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/json_converter/json_converter.cpp",
+  "output": "CMakeFiles/json_converter.dir/src/classes/json_converter/json_converter.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/inverted_index -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -o CMakeFiles/inverted_index.dir/src/classes/inverted_index/inverted_index.cpp.o -c /home/admin/Projects/search_engine/src/classes/inverted_index/inverted_index.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/inverted_index/inverted_index.cpp",
+  "output": "CMakeFiles/inverted_index.dir/src/classes/inverted_index/inverted_index.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/search_server -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -I/home/admin/Projects/search_engine/src/classes/inverted_index -g -o CMakeFiles/search_server.dir/src/classes/search_server/search_server.cpp.o -c /home/admin/Projects/search_engine/src/classes/search_server/search_server.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/search_server/search_server.cpp",
+  "output": "CMakeFiles/search_server.dir/src/classes/search_server/search_server.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/json_converter -I/home/admin/Projects/search_engine/build/_deps/json-src/include -I/home/admin/Projects/search_engine/src/classes/inverted_index -I/home/admin/Projects/search_engine/src/classes/search_server -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -o CMakeFiles/search_engine.dir/src/classes/search_server/search_server.cpp.o -c /home/admin/Projects/search_engine/src/classes/search_server/search_server.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/search_server/search_server.cpp",
+  "output": "CMakeFiles/search_engine.dir/src/classes/search_server/search_server.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/json_converter -I/home/admin/Projects/search_engine/build/_deps/json-src/include -I/home/admin/Projects/search_engine/src/classes/inverted_index -I/home/admin/Projects/search_engine/src/classes/search_server -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -o CMakeFiles/search_engine.dir/src/classes/inverted_index/inverted_index.cpp.o -c /home/admin/Projects/search_engine/src/classes/inverted_index/inverted_index.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/inverted_index/inverted_index.cpp",
+  "output": "CMakeFiles/search_engine.dir/src/classes/inverted_index/inverted_index.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/json_converter -I/home/admin/Projects/search_engine/build/_deps/json-src/include -I/home/admin/Projects/search_engine/src/classes/inverted_index -I/home/admin/Projects/search_engine/src/classes/search_server -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -o CMakeFiles/search_engine.dir/src/classes/json_converter/json_converter.cpp.o -c /home/admin/Projects/search_engine/src/classes/json_converter/json_converter.cpp",
+  "file": "/home/admin/Projects/search_engine/src/classes/json_converter/json_converter.cpp",
+  "output": "CMakeFiles/search_engine.dir/src/classes/json_converter/json_converter.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/src/classes/json_converter -I/home/admin/Projects/search_engine/build/_deps/json-src/include -I/home/admin/Projects/search_engine/src/classes/inverted_index -I/home/admin/Projects/search_engine/src/classes/search_server -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -o CMakeFiles/search_engine.dir/src/main.cpp.o -c /home/admin/Projects/search_engine/src/main.cpp",
+  "file": "/home/admin/Projects/search_engine/src/main.cpp",
+  "output": "CMakeFiles/search_engine.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/include -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/admin/Projects/search_engine/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -I/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/admin/Projects/search_engine/build",
+  "command": "/usr/bin/g++ -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/include -isystem /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/admin/Projects/search_engine/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]

@@ -1,0 +1,15 @@
+{
+	"answers:":{
+		"file000":{
+			"result": "true",
+				"docid": 2,	"rank" : 1,
+				"docid": 1,	"rank" : 0.4,
+				"docid": 0,	"rank" : 0.2
+		},
+		"file001":{
+			"result": "true",
+				"docid": 1,	"rank" : 1,
+				"docid": 0,	"rank" : 0.333333
+		}
+	}
+}
