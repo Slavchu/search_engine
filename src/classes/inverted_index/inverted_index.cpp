@@ -50,13 +50,12 @@ std::vector <Entry>InvertedIndex::getWordCount(std::string word) const{
 }
 std::string inverted_index::to_lover_erase(const std::string str){
         std::string result = str;
-        int pos = 0;
-        for(auto &it : result){
-            if(!isalpha(it)){
-                result.erase(pos, 1);
+        for(int i = 0; i < result.size(); i++){
+            if(!isalpha(result[i])){
+                result.erase(i, 1);
+                continue;
             }
-            it = tolower(it);
-            pos++;
+            result[i] = tolower(result[i]);
         }
         return result;
 }

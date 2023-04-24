@@ -10,6 +10,20 @@ include(CTest)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/output_build/)
 
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/example_files") 
+    file(COPY ${CMAKE_SOURCE_DIR}/example_files DESTINATION ${EXECUTABLE_OUTPUT_PATH}/)
+endif()
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/config_example/config.json")
+    file(COPY ${CMAKE_SOURCE_DIR}/config_example/config.json DESTINATION ${EXECUTABLE_OUTPUT_PATH}/)
+endif()
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/config_example/requests.json")
+    file(COPY ${CMAKE_SOURCE_DIR}/config_example/requests.json DESTINATION ${EXECUTABLE_OUTPUT_PATH}/)
+endif()
+
+
 add_library(json_converter ${CMAKE_SOURCE_DIR}/src/classes/json_converter/json_converter.cpp)
 add_library(inverted_index  ${CMAKE_SOURCE_DIR}/src/classes/inverted_index/inverted_index.cpp)
 add_library(search_server  ${CMAKE_SOURCE_DIR}/src/classes/search_server/search_server.cpp)

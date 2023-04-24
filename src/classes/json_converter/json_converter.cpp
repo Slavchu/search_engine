@@ -2,6 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <filesystem>
+#include <iostream>
 using namespace JSON;
 
 std::string config::version = "";
@@ -13,9 +14,10 @@ ConverterJSON::ConverterJSON(){
     req(std::filesystem::current_path().string() + "/requests.json");
     
     if(!cfg.is_open() || !req.is_open()) {isOpen = false ; return;}
+    isOpen = true;
     cfg >> fileConfig;
     req >> fileRequests;
-
+    
     
     
     config::maxResponses = fileConfig["config"]["max_responses"];
@@ -29,12 +31,12 @@ std::vector <std::string > ConverterJSON::getTextDocument() const{
     std::vector<std::string> result;
 
     for(auto &it: filenames){
-        if(it.find("*/")){
+        if(it.find("*/") != std::string::npos){
             it.replace(it.find("*/"), 2, std::filesystem::current_path().string() + "/");
         }
         std::ifstream file(it);
         std::stringstream ss;
-        if(!file.is_open()) 
+        if(!file.is_open()) {std::cout << it << std::endl << "Not oppened" << std::endl;}
 
         ss << file.rdbuf();
         result.push_back(ss.str());
@@ -60,7 +62,7 @@ void ConverterJSON::putAnswers(std::vector<std::vector <answer>> answers) const{
     ans << "{\n"<<
     "\t\"answers:\":{\n";
     for(int i = 0; i < answers.size(); i++){
-        std::string request = "file" + std::to_string(i/100) + std::to_string((i%100)/10) + std::to_string((i%100 % 10));
+        std::string request = "request" + std::to_string(i/100) + std::to_string((i%100)/10) + std::to_string((i%100 % 10));
         ans << "\t\t" << "\"" << request << "\":{\n";
         
         ans << "\t\t\t" << "\"result\": " << (answers[i].empty()? "\"false\"" : "\"true\",") <<  std::endl;
