@@ -16,6 +16,7 @@ add_library(search_server  ${CMAKE_SOURCE_DIR}/src/classes/search_server/search_
 
 add_executable(search_engine src/classes/search_server/search_server.cpp src/classes/inverted_index/inverted_index.cpp src/classes/json_converter/json_converter.cpp src/main.cpp)
 
+add_executable(search_engine_test ${CMAKE_SOURCE_DIR}/src/classes/search_server/search_server.cpp ${CMAKE_SOURCE_DIR}/src/classes/inverted_index/inverted_index.cpp ${CMAKE_SOURCE_DIR}/src/classes/json_converter/json_converter.cpp ${CMAKE_SOURCE_DIR}/src/test/tests.cpp)
 
 target_include_directories(search_server  PUBLIC ${CMAKE_SOURCE_DIR}/src/classes/search_server)
 target_include_directories(inverted_index PUBLIC ${CMAKE_SOURCE_DIR}/src/classes/inverted_index)
@@ -38,14 +39,16 @@ target_link_libraries(search_engine PRIVATE inverted_index)
 target_link_libraries(search_engine PRIVATE search_server)
 target_link_libraries(search_server PRIVATE inverted_index)
 
-target_link_libraries(search_engine PRIVATE gtest_main)
+target_link_libraries(search_engine_test PRIVATE gtest_main)
 
-
+target_link_libraries(search_engine_test PRIVATE json_converter)
+target_link_libraries(search_engine_test PRIVATE inverted_index)
+target_link_libraries(search_engine_test PRIVATE search_server)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
-gtest_discover_tests(search_engine)
+gtest_discover_tests(search_engine_test)
 
 include(CPack)
 

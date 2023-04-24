@@ -7,7 +7,7 @@ SearchServer::SearchServer(inverted_index::InvertedIndex &ind){
     mInd = ind;
 }
 
-std::vector <RelativeIndex> SearchServer::search(std::vector<std::string> request){  
+std::vector <RelativeIndex> SearchServer::search(std::vector<std::string> request) const{  
        std::vector <RelativeIndex> res;
        std::map <size_t, size_t> absolute;
        
@@ -16,11 +16,11 @@ std::vector <RelativeIndex> SearchServer::search(std::vector<std::string> reques
             auto wordCount = mInd.getWordCount(it);
             if (wordCount.empty())
                continue;
-            for (int i = 0; i < wordCount.size(); i++){
-                 if (absolute.find(wordCount[i].document_id) != absolute.end())
-                      absolute[wordCount[i].document_id] += wordCount[i].count;
+            for(auto &it : wordCount){
+                 if (absolute.find(it.document_id) != absolute.end())
+                      absolute[it.document_id] += it.count;
                  else
-                      absolute[wordCount[i].document_id] = wordCount[i].count;
+                      absolute[it.document_id] = it.count;
             }
        }
 

@@ -22,13 +22,17 @@ ConverterJSON::ConverterJSON(){
     config::name = fileConfig["config"]["name"];
     config::version = fileConfig["config"]["version"];
 }
-std::vector <std::string > ConverterJSON::getTextDocument(){
+std::vector <std::string > ConverterJSON::getTextDocument() const{
     if(fileConfig.find("files") == fileConfig.end() || !fileConfig.find("files").value().size()) 
-    file_count = fileConfig.find("files").value().size();
+    int file_count = fileConfig.find("files").value().size();
     std::vector<std::string> filenames =  fileConfig.find("files").value();
     std::vector<std::string> result;
-    for(int i = 0; i < filenames.size(); i++){
-        std::ifstream file(filenames[i]);
+
+    for(auto &it: filenames){
+        if(it.find("*/")){
+            it.replace(it.find("*/"), 2, std::filesystem::current_path().string() + "/");
+        }
+        std::ifstream file(it);
         std::stringstream ss;
         if(!file.is_open()) 
 
@@ -42,7 +46,7 @@ std::vector <std::string > ConverterJSON::getTextDocument(){
 
 }
 
-std::vector <std::string> ConverterJSON::getRequests(){
+std::vector <std::string> ConverterJSON::getRequests() const{
     
     std::vector<std::string> res =fileRequests.find("requests").value();
     
@@ -51,7 +55,7 @@ std::vector <std::string> ConverterJSON::getRequests(){
     return res;
 }
 
-void ConverterJSON::putAnswers(std::vector<std::vector <answer>> answers){
+void ConverterJSON::putAnswers(std::vector<std::vector <answer>> answers) const{
     std::ofstream ans("answers.json");
     ans << "{\n"<<
     "\t\"answers:\":{\n";

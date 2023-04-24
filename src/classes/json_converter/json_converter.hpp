@@ -13,9 +13,9 @@ namespace JSON{
         static std::string name;
         static int maxResponses;
         public:
-            static std::string getVersion(){return version;}
-            static std::string getName(){return name;}
-            static int getMaxResponses(){
+            static std::string getVersion() {return version;}
+            static std::string getName()  {return name;}
+            static int getMaxResponses() {
                 return maxResponses;
             }
 
@@ -25,16 +25,16 @@ namespace JSON{
         private:
             nlohmann::json fileConfig;
             nlohmann::json fileRequests;
-            size_t file_count, request_count;
+          
             bool isOpen;
 
         public:
             ConverterJSON();
-            std::vector <std::string> getTextDocument();
-            std::vector <std::string> getRequests();
-            bool isOpened(){return isOpen;}
+            std::vector <std::string> getTextDocument() const;
+            std::vector <std::string> getRequests() const;
+            bool isOpened() const{return isOpen;}
 
-            void putAnswers(std::vector<std::vector<answer>> answers);
+            void putAnswers(std::vector<std::vector<answer>> answers) const;
     };
     
 

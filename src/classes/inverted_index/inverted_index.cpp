@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <thread>
 #include <iostream>
+#include <string>
 using namespace inverted_index;
 void InvertedIndex::indexer(std::string document, int doc_ind)
 {
@@ -12,7 +13,7 @@ void InvertedIndex::indexer(std::string document, int doc_ind)
     doc << document;
     while (!doc.eof()){
         doc >> word;
-        word = to_lower_erase(word);
+        word = to_lover_erase(word);
 
         if (freqDictionary.find(word) == freqDictionary.end()){
             vector<Entry> vec;
@@ -47,13 +48,15 @@ std::vector <Entry>InvertedIndex::getWordCount(std::string word) const{
         return std::vector<Entry>();
     return freqDictionary.at(word);
 }
-std::string inverted_index::to_lower_erase(const std::string str){
-        std::string signs = ".!\",-:;?()";
+std::string inverted_index::to_lover_erase(const std::string str){
         std::string result = str;
-        for(int k = 0; k < str.size(); k++){
-            result[k] = tolower(result[k]);
-            if(signs.find(result[k]) != std::string::npos)
-                result.erase(k);       
+        int pos = 0;
+        for(auto &it : result){
+            if(!isalpha(it)){
+                result.erase(pos, 1);
+            }
+            it = tolower(it);
+            pos++;
         }
         return result;
 }

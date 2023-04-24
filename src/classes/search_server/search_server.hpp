@@ -22,7 +22,7 @@ namespace search_server{
             inverted_index::InvertedIndex mInd;
         public:
             SearchServer(inverted_index::InvertedIndex &ind);
-            std::vector <RelativeIndex> search(std::vector<std::string> request);
+            std::vector <RelativeIndex> search(std::vector<std::string> request) const;
     };
 
 }

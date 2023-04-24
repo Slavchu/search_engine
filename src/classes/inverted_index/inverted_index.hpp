@@ -7,7 +7,7 @@
 
 
 namespace inverted_index{
-    std::string to_lower_erase(const std::string str);
+    std::string to_lover_erase(const std::string str);
     struct Entry{
         size_t document_id, count;
         Entry(size_t document_id, size_t count){
