@@ -22,6 +22,9 @@ namespace inverted_index{
         bool operator==(int document_id) const{
             return this->document_id == document_id;
         }
+        bool operator<(const Entry& other) const{
+            return document_id < other.document_id;
+        }
     };
     class InvertedIndex{
             std::map<std::string, std::vector <Entry>> freqDictionary;

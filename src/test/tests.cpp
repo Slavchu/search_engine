@@ -3,6 +3,17 @@
 #include <inverted_index.hpp>
 #include <gtest/gtest.h>
 
+void print_vector(std::vector<std::vector<inverted_index::Entry>> vec){
+    std::cout << "{\n";
+    for(auto vecIt : vec){
+        
+        for(auto it : vecIt){
+            std::cout << "{" <<  it.document_id << "," << it.count <<"} ";
+        }
+        std::cout << ",\n";
+    }
+    std::cout << "}\n";
+}
 void TestInvertedIndexFunctionality(
     const std::vector<std::string> &docs,
     const std::vector<std::string> &requests,
@@ -17,6 +28,8 @@ void TestInvertedIndexFunctionality(
         std::vector<inverted_index::Entry> word_count = idx.getWordCount(request);
         result.push_back(word_count);
     }
+    print_vector(result); print_vector(expected);
+
     ASSERT_EQ(result, expected);
 
 }

@@ -3,7 +3,9 @@
 #include <thread>
 #include <iostream>
 #include <string>
+#include <mutex>
 using namespace inverted_index;
+std::mutex ind_mutex;
 void InvertedIndex::indexer(std::string document, int doc_ind)
 {
     using namespace std;
@@ -14,8 +16,9 @@ void InvertedIndex::indexer(std::string document, int doc_ind)
     while (!doc.eof()){
         doc >> word;
         word = to_lover_erase(word);
-
+        ind_mutex.lock();
         if (freqDictionary.find(word) == freqDictionary.end()){
+            
             vector<Entry> vec;
             vec.push_back(Entry(doc_ind, 1));
             freqDictionary[word] = vec;
@@ -32,6 +35,8 @@ void InvertedIndex::indexer(std::string document, int doc_ind)
                 vec.push_back(Entry(doc_ind, 1));
             }
         }
+        ind_mutex.unlock();
+
     }
 }
 void InvertedIndex::updateDocumentBase(std::vector<std::string> documents){
@@ -39,9 +44,13 @@ void InvertedIndex::updateDocumentBase(std::vector<std::string> documents){
     for(int i = 0; i < documents.size(); i++){
         th.push_back(std::thread(&InvertedIndex::indexer, this, documents[i], i));
     }
-    for(int i = 0; i < documents.size(); i++){
-        th[i].join();
+
+    for(auto &it: th){
+        it.join();
     }
+
+    for(auto &it: freqDictionary)
+        std::sort(it.second.begin(), it.second.end());
 }
 std::vector <Entry>InvertedIndex::getWordCount(std::string word) const{
     if(freqDictionary.find(word) == freqDictionary.end())
