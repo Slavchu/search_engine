@@ -130,3 +130,95 @@ puts all answers in _answers.json_ file
 
 > **Note:** config json gets data after initialization **ConvertJSON** class. Only **ConvertJSON** has access to **config** data
 
+## InvertedIndex
+
+```c++ 
+void updateDocumentBase(std::vector <std::string> documents) 
+```
+</br>
+updates database of each word count in document. Input is std::vector of std::string, that contains texts of each document. Index of text is document id. Function is multithreaded.</br>
+
+```c++
+std::vector<Entry> getWordCount(std::string word) 
+``` 
+</br>
+returns array of class inverted_index::Entry for word. Contains data of document id of document, where word was found and num of it in the document. vector is sorted by count from lowest to greatest
+
+## Entry
+``` c++
+size_t document_id
+```
+document id
+</br></br></br>
+
+```c++
+size_t count
+``` 
+count words appearings in the document
+</br></br></br>
+
+```c++
+Entry (size_t document_id, size_t count)
+```
+class constructor
+</br></br></br>
+
+```c++
+bool operator ==(const Entry& other) const
+```
+checks equality of structures
+</br></br></br>
+
+```c++
+bool operator==(int) const
+```
+checks equality of documents id
+</br></br></br>
+
+```c++
+bool operator<(const Entry& other) const
+```
+checks if the rank of current structure is lower then other one
+</br></br></br>
+
+## SearchServer
+```c++
+SearchServer(inverted_index::InvertedIndex &ind);
+```
+Constructor. Takes reference to InvertedIndex for documents you want to search
+</br></br></br>
+
+```c++
+std::vector <RelativeIndex> search(std::vector<std::string> request) const
+```
+Returns response on request. Each word of request is separate element of vector of strings. Response is vector of **RelativeIndex**, sorted by rank from greatest to lowest, and by document id from lowest to greatest in case of rank equality.
+
+## RelativeIndex
+```c++
+size_t doc_id;
+float rank;
+```
+document id and rank of document for request.
+</br></br></br>
+```c++
+size_t doc_id;
+float rank;
+```
+document id and rank of document for request.
+</br></br></br>
+```c++
+RelativeIndex(size_t doc_id, float rank)
+```
+Constructor. Takes document_id and rank for input
+</br></br></br>
+```c++
+bool operator>(const RelativeIndex& oth) const
+```
+Retruns true if current structs rank is greater than other. In case of ranks equality returns true if document_id is lower than other. 
+</br></br></br>
+
+```c++
+bool operator==(const RelativeIndex& oth) const
+```
+Returns true if structs variables values are equal
+</br></br></br>
