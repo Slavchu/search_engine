@@ -109,8 +109,24 @@ This file generates by program and contains results on requests.json file. Has f
 ### ***search_server***
 > Classes & structures: 
 > - SearchServer - searches requests and gives sorted result
-> - RelativeIndex - struct, that contains document and its document id for request
+> - RelativeIndex - struct, that contains document and its document id for request </br>
 
- 
- 
+# Classes & structures
+## ConverterJSON
+- ***ConverterJSON();*** </br>
+    default constructor, reads config and cheks request existance
+- ***std::vector <std::string> getTextDocument() const***</br>
+returns text of documents, writen in config. 
+- ***std::vector <std::string> getRequests() const*** </br>
+returns requests from _requests.json_
+- ***bool isOpened() const*** </br>
+cheks if all files have been opened
+- ***void putAnswers(std::vector<std::vector<answer>> answers) const***</br>
+puts all answers in _answers.json_ file
+## config
+- ***static std::string getVersion()*** </br> returns version, read from _config.json_
+- ***static std::string getName()*** </br> returns name, read from _config.json_
+- ***static int getMaxResponses()*** </br> returns num of max responses, read from _config.json_
+
+> **Note:** config json gets data after initialization **ConvertJSON** class. Only **ConvertJSON** has access to **config** data
 

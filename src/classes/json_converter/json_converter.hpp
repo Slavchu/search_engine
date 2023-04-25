@@ -15,9 +15,7 @@ namespace JSON{
         public:
             static std::string getVersion() {return version;}
             static std::string getName()  {return name;}
-            static int getMaxResponses() {
-                return maxResponses;
-            }
+            static int getMaxResponses() {return maxResponses;}
 
     };
     class ConverterJSON{
