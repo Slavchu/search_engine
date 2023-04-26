@@ -28,10 +28,10 @@ namespace inverted_index{
     };
     class InvertedIndex{
             std::map<std::string, std::vector <Entry>> freqDictionary;
-            void indexer(std::string document, int doc_ind);
+            void indexer(const std::string& document, int doc_ind);
         public:
-            void updateDocumentBase(std::vector <std::string> documents);
-            std::vector<Entry> getWordCount(std::string word) const;
+            void updateDocumentBase(const std::vector <std::string>& documents);
+            std::vector<Entry> getWordCount(const std::string& word) const;
 
     };
     

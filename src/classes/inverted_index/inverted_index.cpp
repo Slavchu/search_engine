@@ -6,7 +6,7 @@
 #include <mutex>
 using namespace inverted_index;
 std::mutex ind_mutex;
-void InvertedIndex::indexer(std::string document, int doc_ind)
+void InvertedIndex::indexer(const std::string& document, int doc_ind)
 {
     using namespace std;
 
@@ -39,7 +39,7 @@ void InvertedIndex::indexer(std::string document, int doc_ind)
 
     }
 }
-void InvertedIndex::updateDocumentBase(std::vector<std::string> documents){
+void InvertedIndex::updateDocumentBase(const std::vector<std::string>& documents){
     std::vector <std::thread> th;
     for(int i = 0; i < documents.size(); i++){
         th.push_back(std::thread(&InvertedIndex::indexer, this, documents[i], i));
@@ -52,7 +52,7 @@ void InvertedIndex::updateDocumentBase(std::vector<std::string> documents){
     for(auto &it: freqDictionary)
         std::sort(it.second.begin(), it.second.end());
 }
-std::vector <Entry>InvertedIndex::getWordCount(std::string word) const{
+std::vector <Entry>InvertedIndex::getWordCount(const std::string& word) const{
     if(freqDictionary.find(word) == freqDictionary.end())
         return std::vector<Entry>();
     return freqDictionary.at(word);

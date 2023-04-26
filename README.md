@@ -222,3 +222,4 @@ bool operator==(const RelativeIndex& oth) const
 ```
 Returns true if structs variables values are equal
 </br></br></br>
+
