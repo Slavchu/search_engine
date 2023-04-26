@@ -7,7 +7,7 @@ SearchServer::SearchServer(inverted_index::InvertedIndex &ind){
     mInd = ind;
 }
 
-std::vector <RelativeIndex> SearchServer::search(std::vector<std::string> request) const{  
+std::vector <RelativeIndex> SearchServer::search(const std::vector<std::string>& request) const{  
        std::vector <RelativeIndex> res;
        std::map <size_t, size_t> absolute;
        

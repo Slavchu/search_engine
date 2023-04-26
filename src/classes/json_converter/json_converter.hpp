@@ -32,7 +32,7 @@ namespace JSON{
             std::vector <std::string> getRequests() const;
             bool isOpened() const{return isOpen;}
 
-            void putAnswers(std::vector<std::vector<answer>> answers) const;
+            void putAnswers(const std::vector<std::vector<answer>>& answers) const;
     };
     
 

@@ -57,7 +57,7 @@ std::vector <std::string> ConverterJSON::getRequests() const{
     return res;
 }
 
-void ConverterJSON::putAnswers(std::vector<std::vector <answer>> answers) const{
+void ConverterJSON::putAnswers(const std::vector<std::vector <answer>>& answers) const{
     std::ofstream ans("answers.json");
     ans << "{\n"<<
     "\t\"answers:\":{\n";
